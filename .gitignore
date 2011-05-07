@@ -8,10 +8,9 @@ dist
 build
 *.egg
 *.egg-info
-_mailinglist
 TODO
-^docs/_build
+docs/_build
 ^TODO
 ^example.py
 \.log$
-
+MANIFEST
