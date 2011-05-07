@@ -1,8 +1,13 @@
 # -*- coding: utf-8 -*-
+from pykt import *
 from pykt import KyotoTycoon as kt1
 from kyototycoon import KyotoTycoon as kt2
 import timeit
 
+from cPickle import dumps, loads
+
+set_serializer(dumps)
+set_deserializer(loads)
 key = "A" * 12
 val = "B" * 1024  
 
