@@ -22,7 +22,7 @@ include_dirs=[]
 
 
 setup(name='pykt',
-        version="0.0.1",
+        version="0.0.2",
         description="KyotoTycoon client for Python",
         long_description=read("README.rst"),
         keywords='KyotoTycoon',
