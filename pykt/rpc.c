@@ -13,6 +13,7 @@
 #define STATUS_URL "/rpc/status"
 #define CLEAR_URL "/rpc/clear"
 #define SYNC_URL "/rpc/synchronize"
+#define SET_URL "/rpc/set"
 #define ADD_URL "/rpc/add"
 #define REPLACE_URL "/rpc/replace"
 #define APPEND_URL "/rpc/append"
@@ -699,6 +700,12 @@ add_internal(DBObject *db, char *url, size_t url_len, PyObject *keyObj, PyObject
     return result;
 }
 */
+
+inline PyObject* 
+rpc_call_set(DBObject *db, PyObject *keyObj, PyObject *valueObj, int expire)
+{
+    return add_internal(db, SET_URL, LEN(SET_URL), keyObj, valueObj, expire);
+}
 
 inline PyObject* 
 rpc_call_add(DBObject *db, PyObject *keyObj, PyObject *valueObj, int expire)
