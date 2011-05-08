@@ -8,6 +8,9 @@ inline void
 set_request_path(http_connection *connection, char *method, size_t method_len, char *path, size_t path_len);
 
 inline void
+set_rest_request_path(http_connection *connection, PyObject *dbObj, char *method, size_t method_len, char *path, size_t path_len);
+
+inline void
 add_header_oneline(http_connection *con, char *val, size_t val_len);
 
 inline void

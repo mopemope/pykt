@@ -27,10 +27,8 @@ def test_head():
 def test_head_with_db():
     db = KyotoTycoon("test")
     db = db.open()
-    db.set("A", "B")
     ret = db.head("A")
-    ok_(ret  == True)
-    db.close()
+    ok_(ret == False)
 
 @with_setup(setup=clear)
 def test_head_utf8():

@@ -14,14 +14,13 @@ def test_err_get():
     db = KyotoTycoon()
     ret = db.get("A")
 
+@raises(KTException)
 @with_setup(setup=clear)
 def test_get_with_db():
     db = KyotoTycoon("test")
     db = db.open()
-    db.set("A", "B")
-    ret = db.get("A")
-    ok_(ret == "B")
-    db.close()
+    db.get("A")
+    ok_(False)
 
 @with_setup(setup=clear)
 def test_get():

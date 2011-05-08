@@ -115,8 +115,12 @@ getPyStringAndDecode(buffer *buf)
 inline char *
 getString(buffer *buf)
 {
-    buf->buf[buf->len] = '\0';
-    return buf->buf;
+    if(buf && buf->len > 0){
+        buf->buf[buf->len] = '\0';
+        return buf->buf;
+    }else{
+        return "";
+    }
 }
 
 

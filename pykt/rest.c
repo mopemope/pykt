@@ -37,7 +37,8 @@ rest_call_get(DBObject *db, PyObject *keyObj)
     PyString_AsStringAndSize(keyObj, &key, &key_len);
     urlencode(key, key_len, &encbuf, &encbuf_len);
 
-    set_request_path(con, METHOD_GET, LEN(METHOD_GET), encbuf, encbuf_len);
+    //set_request_path(con, METHOD_GET, LEN(METHOD_GET), encbuf, encbuf_len);
+    set_rest_request_path(con, db->dbObj, METHOD_GET, LEN(METHOD_GET), encbuf, encbuf_len);
     end_header(con);
     
     if(request(con, 200) > 0){
@@ -51,6 +52,10 @@ rest_call_get(DBObject *db, PyObject *keyObj)
             PyErr_Clear();
             result = Py_None;
             Py_INCREF(result);
+        }else{
+            char *temp = getString(con->response_body);
+            PyErr_SetString(KtException, temp);
+            result = NULL;
         }
     }
     
@@ -82,7 +87,8 @@ rest_call_head(DBObject *db, PyObject *keyObj)
     PyString_AsStringAndSize(keyObj, &key, &key_len);
     urlencode(key, key_len, &encbuf, &encbuf_len);
 
-    set_request_path(con, METHOD_HEAD, LEN(METHOD_HEAD), encbuf, encbuf_len);
+    //set_request_path(con, METHOD_HEAD, LEN(METHOD_HEAD), encbuf, encbuf_len);
+    set_rest_request_path(con, db->dbObj, METHOD_HEAD, LEN(METHOD_HEAD), encbuf, encbuf_len);
     end_header(con);
     
     //head request
@@ -91,11 +97,9 @@ rest_call_head(DBObject *db, PyObject *keyObj)
         result = Py_True;
         Py_INCREF(result);
     }else{
-        if(con->status_code == 404){
-            PyErr_Clear();
-            result = Py_False;
-            Py_INCREF(result);
-        }
+        PyErr_Clear();
+        result = Py_False;
+        Py_INCREF(result);
     }
     
     free_http_data(con);
@@ -140,7 +144,8 @@ rest_call_put(DBObject *db, PyObject *keyObj, PyObject *valueObj, int expire, kt
     urlencode(key, key_len, &encbuf, &encbuf_len);
     //DEBUG("urlencode key %s", encbuf);
 
-    set_request_path(con, METHOD_PUT, LEN(METHOD_PUT), encbuf, encbuf_len);
+    //set_request_path(con, METHOD_PUT, LEN(METHOD_PUT), encbuf, encbuf_len);
+    set_rest_request_path(con, db->dbObj, METHOD_PUT, LEN(METHOD_PUT), encbuf, encbuf_len);
     
     //get content-length str
     snprintf(content_length, sizeof (content_length), "%d", val_len);
@@ -172,8 +177,9 @@ rest_call_put(DBObject *db, PyObject *keyObj, PyObject *valueObj, int expire, kt
         Py_INCREF(result);
     }else{
         if(con->response_status == RES_SUCCESS){
-            result = Py_False;;
-            Py_INCREF(result);
+            char *temp = getString(con->response_body);
+            PyErr_SetString(KtException, temp);
+            result = NULL;
         }else if(con->response_status == RES_KT_ERROR){
             switch(mode){
                 case MODE_ADD:
@@ -215,7 +221,8 @@ rest_call_delete(DBObject *db, PyObject *keyObj)
     PyString_AsStringAndSize(keyObj, &key, &key_len);
     urlencode(key, key_len, &encbuf, &encbuf_len);
 
-    set_request_path(con, METHOD_DELETE, LEN(METHOD_DELETE), encbuf, encbuf_len);
+    //set_request_path(con, METHOD_DELETE, LEN(METHOD_DELETE), encbuf, encbuf_len);
+    set_rest_request_path(con, db->dbObj, METHOD_DELETE, LEN(METHOD_DELETE), encbuf, encbuf_len);
     end_header(con);
     
     if(request(con, 204) > 0){
@@ -226,6 +233,10 @@ rest_call_delete(DBObject *db, PyObject *keyObj)
             PyErr_Clear();
             result = Py_False;
             Py_INCREF(result);
+        }else{
+            char *temp = getString(con->response_body);
+            PyErr_SetString(KtException, temp);
+            result = NULL;
         }
     }
     

@@ -25,16 +25,14 @@ def test_replace():
     ok_(ret == "B")
     db.close()
 
+@raises(KTException)
 @with_setup(setup=clear)
 def test_replace_with_db():
     db = KyotoTycoon("test")
     db = db.open()
     db.set("A", "1")
-    ret = db.replace("A", "B")
-    ok_(ret)
-    ret = db.get("A")
-    ok_(ret == "B")
-    db.close()
+    db.replace("A", "B")
+    ok_(False)
 
 @with_setup(setup=clear)
 def test_replace_utf8():
@@ -75,10 +73,7 @@ def test_no_key():
     db = KyotoTycoon()
     db = db.open()
     ret = db.replace("A", "B")
-    ok_(ret)
-    ret = db.get("A")
-    ok_(ret == "B")
-    db.close()
+    ok_(False)
 
 @with_setup(setup=clear)
 def test_replace_expire():

@@ -388,12 +388,12 @@ recv_response(http_connection *con, int status_code)
     }
     
     DEBUG("response status code %d", parser->status_code);
-    
-    if(parser->status_code == 400 ){
-        //Invalid parameter
-        PyErr_SetString(KtException,"Invalid parameter");
-        goto error;
-    }
+     
+    //if(parser->status_code == 400 ){
+    //Invalid parameter
+    //PyErr_SetString(KtException,"Invalid parameter");
+    //goto error;
+    //}
     if(parser->status_code != status_code){
         
         goto error;

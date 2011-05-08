@@ -13,6 +13,27 @@ set_request_path(http_connection *con, char *method, size_t method_len, char *pa
 }
 
 inline void
+set_rest_request_path(http_connection *con, PyObject *dbObj, char *method, size_t method_len, char *path, size_t path_len)
+{
+    data_bucket *bucket = con->bucket;
+    
+    //DEBUG("request URL %s", path);
+    set2bucket(bucket, method, method_len);
+    if(dbObj){
+        char *db;
+        Py_ssize_t db_len;
+        PyString_AsStringAndSize(dbObj, &db, &db_len);
+        set2bucket(bucket, "/", 1);
+        set2bucket(bucket, db, db_len);
+    }
+    set2bucket(bucket, "/", 1);
+    set2bucket(bucket, path, path_len);
+    set2bucket(bucket, HTTP_11, LEN(HTTP_11));
+    set2bucket(bucket, CONNECTION_KEEP_ALIVE, LEN(CONNECTION_KEEP_ALIVE));
+
+}
+
+inline void
 add_content_length(http_connection *con, char *value, size_t value_len)
 {
     data_bucket *bucket = con->bucket;

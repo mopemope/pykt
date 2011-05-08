@@ -24,15 +24,13 @@ def test_set():
     ok_(ret == "B")
     db.close()
 
+@raises(KTException)
 @with_setup(setup=clear)
 def test_set_with_db():
     db = KyotoTycoon("test")
     db = db.open()
-    ret = db.set("A", "B")
-    ok_(ret)
-    ret = db.get("A")
-    ok_(ret == "B")
-    db.close()
+    db.set("A", "B")
+    ok_(False)
 
 @with_setup(setup=clear)
 def test_set_utf8():
