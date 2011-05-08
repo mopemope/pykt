@@ -1,4 +1,11 @@
-0.1
+0.0.2
+=======
+(bug fix release. rerelease 2011-05-08)
+
+* Fix rest request, support database identifier
+* Fix raise callback error
+
+0.0.1
 =======
 (New feature release. rerelease 2011-05-07)
 
