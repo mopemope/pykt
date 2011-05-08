@@ -350,6 +350,10 @@ send_data(http_connection *con)
         case 0:
             //EWOULDBLOCK or EAGAIN
             call_wait_callback(con->fd, WAIT_WRITE);
+            if(PyErr_Occurred()){
+                // error occurred callback
+                return -1;
+            }
             return send_data(con);
         case -1:
             //IO Error
@@ -449,6 +453,10 @@ recv_data(http_connection *con)
         case -1:
             if (errno == EAGAIN || errno == EWOULDBLOCK) {
                 call_wait_callback(con->fd, WAIT_READ);
+                if(PyErr_Occurred()){
+                    // error occurred callback
+                    return -1;
+                }
                 return 0;
             } else {
                 PyErr_SetFromErrno(PyExc_IOError);
