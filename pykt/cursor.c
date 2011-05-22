@@ -171,15 +171,15 @@ CursorObject_delete(CursorObject *self, PyObject *args)
 
 static PyMethodDef CursorObject_methods[] = {
     {"jump", (PyCFunction)CursorObject_jump, METH_VARARGS|METH_KEYWORDS, 0},
-    //{"jump_back", (PyCFunction)CursorObject_jump_back, METH_VARARGS|METH_KEYWORDS, 0},
+    {"jump_back", (PyCFunction)CursorObject_jump_back, METH_VARARGS|METH_KEYWORDS, 0},
     {"step", (PyCFunction)CursorObject_step, METH_NOARGS, 0},
-    //{"step_back", (PyCFunction)CursorObject_step_back, METH_NOARGS, 0},
+    {"step_back", (PyCFunction)CursorObject_step_back, METH_NOARGS, 0},
     {"set_value", (PyCFunction)CursorObject_set_value, METH_VARARGS|METH_KEYWORDS, 0},
     {"remove", (PyCFunction)CursorObject_remove, METH_NOARGS, 0},
     {"get_key", (PyCFunction)CursorObject_get_key, METH_VARARGS|METH_KEYWORDS, 0},
     {"get_value", (PyCFunction)CursorObject_get_value, METH_VARARGS|METH_KEYWORDS, 0},
     {"get", (PyCFunction)CursorObject_get, METH_VARARGS|METH_KEYWORDS, 0},
-    //{"delete", (PyCFunction)CursorObject_delete, METH_NOARGS, 0},
+    {"delete", (PyCFunction)CursorObject_delete, METH_NOARGS, 0},
     {NULL, NULL}
 };
 
