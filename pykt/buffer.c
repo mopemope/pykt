@@ -19,7 +19,7 @@ dealloc_buffer(buffer *buf)
 }
 
 
-inline buffer *
+buffer *
 new_buffer(size_t buf_size, size_t limit)
 {
     buffer *buf;
@@ -47,7 +47,7 @@ new_buffer(size_t buf_size, size_t limit)
     return buf;
 }
 
-inline buffer_result
+buffer_result
 write2buf(buffer *buf, const char *c, size_t  l) {
     size_t newl;
     char *newbuf;
@@ -83,7 +83,7 @@ write2buf(buffer *buf, const char *c, size_t  l) {
     return ret;
 }
 
-inline void
+void
 free_buffer(buffer *buf)
 {
     DEBUG("free_buffer %p", buf);
@@ -91,7 +91,7 @@ free_buffer(buffer *buf)
     dealloc_buffer(buf);
 }
 
-inline PyObject *
+PyObject *
 getPyString(buffer *buf)
 {
     PyObject *o;
@@ -101,7 +101,7 @@ getPyString(buffer *buf)
     return o;
 }
 
-inline PyObject *
+PyObject *
 getPyStringAndDecode(buffer *buf)
 {
     PyObject *o;
@@ -112,7 +112,7 @@ getPyStringAndDecode(buffer *buf)
 }
 
 
-inline char *
+char *
 getString(buffer *buf)
 {
     if(buf && buf->len > 0){

@@ -1,6 +1,6 @@
 #include "bucket.h"
 
-inline data_bucket *
+data_bucket *
 create_data_bucket(int cnt)
 {
 
@@ -26,7 +26,7 @@ create_data_bucket(int cnt)
     return bucket;
 }
 
-inline void
+void
 free_data_bucket(data_bucket *bucket)
 {
     DEBUG("free_data_bucket %p", bucket);
@@ -34,7 +34,7 @@ free_data_bucket(data_bucket *bucket)
     PyMem_Free(bucket);
 }
 
-inline void
+void
 set2bucket(data_bucket *bucket, char *buf, size_t len)
 {
     

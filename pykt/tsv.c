@@ -2,7 +2,7 @@
 #include "util.h"
 
 
-inline void 
+void 
 on_record_keylist(void *data, const char *key, size_t key_len, const char *val, size_t val_len)
 {
     PyObject *keyObj, *list;
@@ -120,7 +120,7 @@ on_record(void *data, const char *key, size_t key_len, const char *val, size_t v
     Py_DECREF(valueObj);
 }
 
-inline PyObject * 
+PyObject * 
 convert2dict(buffer *buf)
 {
     tsv_ctx *ctx;
@@ -152,7 +152,7 @@ convert2dict(buffer *buf)
     return dict;
 }
 
-inline PyObject * 
+PyObject * 
 convert2valuedict(buffer *buf)
 {
     tsv_ctx *ctx;
@@ -184,7 +184,7 @@ convert2valuedict(buffer *buf)
     return dict;
 }
 
-inline PyObject * 
+PyObject * 
 convert2keylist(buffer *buf)
 {
     tsv_ctx *ctx;

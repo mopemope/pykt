@@ -308,7 +308,7 @@ get_recods_size(PyObject *dict)
 }
 */
 
-inline PyObject* 
+PyObject* 
 rpc_call_echo(DBObject *db)
 {
     http_connection *con;
@@ -338,7 +338,7 @@ rpc_call_echo(DBObject *db)
 
 }
 
-inline PyObject* 
+PyObject* 
 rpc_call_report(DBObject *db)
 {
 
@@ -367,7 +367,7 @@ rpc_call_report(DBObject *db)
     return result;
 }
 
-inline PyObject* 
+PyObject* 
 rpc_call_status(DBObject *db)
 {
 
@@ -416,7 +416,7 @@ rpc_call_status(DBObject *db)
     return result;
 }
 
-inline PyObject* 
+PyObject* 
 rpc_call_clear(DBObject *db)
 {
 
@@ -466,7 +466,7 @@ rpc_call_clear(DBObject *db)
     return result;
 }
 
-inline PyObject* 
+PyObject* 
 rpc_call_sync(DBObject *db, int hard, char *command, Py_ssize_t command_len)
 {
     http_connection *con;
@@ -701,31 +701,31 @@ add_internal(DBObject *db, char *url, size_t url_len, PyObject *keyObj, PyObject
 }
 */
 
-inline PyObject* 
+PyObject* 
 rpc_call_set(DBObject *db, PyObject *keyObj, PyObject *valueObj, int expire)
 {
     return add_internal(db, SET_URL, LEN(SET_URL), keyObj, valueObj, expire);
 }
 
-inline PyObject* 
+PyObject* 
 rpc_call_add(DBObject *db, PyObject *keyObj, PyObject *valueObj, int expire)
 {
     return add_internal(db, ADD_URL, LEN(ADD_URL), keyObj, valueObj, expire);
 }
 
-inline PyObject* 
+PyObject* 
 rpc_call_replace(DBObject *db, PyObject *keyObj, PyObject *valueObj, int expire)
 {
     return add_internal(db, REPLACE_URL, LEN(REPLACE_URL), keyObj, valueObj, expire);
 }
 
-inline PyObject* 
+PyObject* 
 rpc_call_append(DBObject *db, PyObject *keyObj, PyObject *valueObj, int expire)
 {
     return add_internal(db, APPEND_URL, LEN(APPEND_URL), keyObj, valueObj, expire);
 }
 
-inline PyObject* 
+PyObject* 
 rpc_call_increment(DBObject *db, PyObject *keyObj, int num, int expire)
 {
 
@@ -784,7 +784,7 @@ rpc_call_increment(DBObject *db, PyObject *keyObj, int num, int expire)
     return result;
 }
 
-inline PyObject* 
+PyObject* 
 rpc_call_increment_double(DBObject *db, PyObject *keyObj, double num, int expire)
 {
     http_connection *con;
@@ -843,7 +843,7 @@ rpc_call_increment_double(DBObject *db, PyObject *keyObj, double num, int expire
     return result;
 }
 
-inline PyObject* 
+PyObject* 
 rpc_call_cas(DBObject *db, PyObject *keyObj, PyObject *ovalObj, PyObject *nvalObj, int expire)
 {
     http_connection *con;
@@ -1039,7 +1039,7 @@ rpc_call_cas(DBObject *db, PyObject *keyObj, PyObject *dbObj, PyObject *ovalObj,
 
 }*/
 
-inline PyObject* 
+PyObject* 
 rpc_call_match_prefix(DBObject *db, PyObject *prefixObj)
 {
     http_connection *con;
@@ -1093,7 +1093,7 @@ rpc_call_match_prefix(DBObject *db, PyObject *prefixObj)
     return result;
 }
 
-inline PyObject* 
+PyObject* 
 rpc_call_match_regex(DBObject *db, PyObject *regexObj)
 {
     http_connection *con;
@@ -1148,7 +1148,7 @@ rpc_call_match_regex(DBObject *db, PyObject *regexObj)
 }
 
 
-inline PyObject* 
+PyObject* 
 rpc_call_set_bulk(DBObject *db, PyObject *recordObj, int expire, int atomic)
 {
 
@@ -1212,7 +1212,7 @@ rpc_call_set_bulk(DBObject *db, PyObject *recordObj, int expire, int atomic)
     return result;
 }
 
-inline PyObject* 
+PyObject* 
 rpc_call_remove_bulk(DBObject *db, PyObject *keysObj, int atomic)
 {
     http_connection *con;
@@ -1270,7 +1270,7 @@ rpc_call_remove_bulk(DBObject *db, PyObject *keysObj, int atomic)
     return result;
 }
 
-inline PyObject* 
+PyObject* 
 rpc_call_get_bulk(DBObject *db, PyObject *keysObj, int atomic)
 {
     http_connection *con;
@@ -1328,7 +1328,7 @@ rpc_call_get_bulk(DBObject *db, PyObject *keysObj, int atomic)
     return result;
 }
 
-inline PyObject* 
+PyObject* 
 rpc_call_vacuum(DBObject *db, int step)
 {
     http_connection *con;
@@ -1391,7 +1391,7 @@ rpc_call_vacuum(DBObject *db, int step)
 
 }
 
-inline PyObject* 
+PyObject* 
 rpc_call_play_script(DBObject *db, char *name, Py_ssize_t name_len,  PyObject *recordObj)
 {
     http_connection *con;
@@ -1445,7 +1445,7 @@ rpc_call_play_script(DBObject *db, char *name, Py_ssize_t name_len,  PyObject *r
 
 }
 
-inline PyObject* 
+PyObject* 
 rpc_call_cur_jump(DBObject *db, int cur, PyObject *keyObj)
 {
     http_connection *con;
@@ -1503,7 +1503,7 @@ rpc_call_cur_jump(DBObject *db, int cur, PyObject *keyObj)
     return result;
 }
 
-inline PyObject* 
+PyObject* 
 rpc_call_cur_jump_back(DBObject *db, int cur, PyObject *keyObj)
 {
     http_connection *con;
@@ -1561,7 +1561,7 @@ rpc_call_cur_jump_back(DBObject *db, int cur, PyObject *keyObj)
     return result;
 }
 
-inline PyObject* 
+PyObject* 
 rpc_call_cur_step(DBObject *db, int cur)
 {
     http_connection *con;
@@ -1611,7 +1611,7 @@ rpc_call_cur_step(DBObject *db, int cur)
     return result;
 }
 
-inline PyObject* 
+PyObject* 
 rpc_call_cur_step_back(DBObject *db, int cur)
 {
     http_connection *con;
@@ -1661,7 +1661,7 @@ rpc_call_cur_step_back(DBObject *db, int cur)
     return result;
 }
 
-inline PyObject* 
+PyObject* 
 rpc_call_cur_set_value(DBObject *db, int cur, PyObject *valueObj, int step, int expire)
 {
     http_connection *con;
@@ -1717,7 +1717,7 @@ rpc_call_cur_set_value(DBObject *db, int cur, PyObject *valueObj, int step, int 
 }
 
 
-inline PyObject* 
+PyObject* 
 rpc_call_cur_remove(DBObject *db, int cur)
 {
     http_connection *con;
@@ -1761,7 +1761,7 @@ rpc_call_cur_remove(DBObject *db, int cur)
     return result;
 }
 
-inline PyObject* 
+PyObject* 
 rpc_call_cur_get_key(DBObject *db, int cur, int step)
 {
     http_connection *con;
@@ -1811,7 +1811,7 @@ rpc_call_cur_get_key(DBObject *db, int cur, int step)
     return result;
 }
 
-inline PyObject* 
+PyObject* 
 rpc_call_cur_get_value(DBObject *db, int cur, int step)
 {
     http_connection *con;
@@ -1862,7 +1862,7 @@ rpc_call_cur_get_value(DBObject *db, int cur, int step)
 
 }
 
-inline PyObject* 
+PyObject* 
 rpc_call_cur_get(DBObject *db, int cur, int step)
 {
     http_connection *con;
@@ -1913,7 +1913,7 @@ rpc_call_cur_get(DBObject *db, int cur, int step)
     return result;
 }
 
-inline PyObject* 
+PyObject* 
 rpc_call_cur_delete(DBObject *db, int cur)
 {
 

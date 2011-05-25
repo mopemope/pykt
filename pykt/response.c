@@ -132,7 +132,7 @@ static http_parser_settings settings =
   ,.on_message_complete = message_complete_cb
   };
 
-inline http_parser *  
+http_parser *  
 init_parser(http_connection *con)
 {
     http_parser *parser;
@@ -151,7 +151,7 @@ init_parser(http_connection *con)
     return parser;
 }
 
-inline size_t 
+size_t 
 execute_parse(http_connection *con, const char *buf, size_t len)
 {
     size_t nparsed;
@@ -159,7 +159,7 @@ execute_parse(http_connection *con, const char *buf, size_t len)
     return nparsed;
 }
 
-inline int 
+int 
 parser_finish(http_connection *con)
 {
     return con->response_status == RES_SUCCESS;

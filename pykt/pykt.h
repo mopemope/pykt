@@ -57,13 +57,13 @@ extern PyObject *wait_callback;
 extern PyObject *KtException;
 extern PyObject *TimeoutException;
 
-inline void
+void
 call_wait_callback(int fd, int type);
 
-inline PyObject *
+PyObject *
 serialize_value(PyObject *obj);
 
-inline PyObject *
+PyObject *
 deserialize_value(PyObject *obj);
 
 #endif 

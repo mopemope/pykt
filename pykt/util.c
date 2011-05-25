@@ -13,7 +13,7 @@ hex2int(int i)
     return i;
 }
 
-inline int
+int
 urldecode(char *buf, int len)
 {
     int c, c1;
@@ -46,7 +46,7 @@ tohex(char code) {
   return hex[code & 15];
 }
 
-inline void 
+void 
 urlencode(char *str, size_t len, char **s, size_t *s_len)
 {  
     char *pstr = str;
@@ -70,7 +70,7 @@ urlencode(char *str, size_t len, char **s, size_t *s_len)
     *s = buf;
 }
 
-inline uint64_t
+uint64_t
 get_expire_time(int val)
 {
     time_t now;

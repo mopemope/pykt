@@ -14,16 +14,16 @@ typedef struct {
     uint8_t sended;
 } data_bucket;
 
-inline data_bucket *
+data_bucket *
 create_data_bucket(int cnt);
 
-inline void
+void
 free_data_bucket(data_bucket *bucket);
 
-inline void
+void
 set2bucket(data_bucket *bucket, char *buf, const size_t len);
 
-//inline int 
+//int 
 //writev_bucket(data_bucket *bucket);
 
 #endif

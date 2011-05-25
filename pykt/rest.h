@@ -11,16 +11,16 @@ typedef enum{
     MODE_REPLACE,
 } kt_mode;
 
-inline PyObject* 
+PyObject* 
 rest_call_get(DBObject *db, PyObject *keyObj);
 
-inline PyObject* 
+PyObject* 
 rest_call_head(DBObject *db, PyObject *keyObj);
 
-inline PyObject* 
+PyObject* 
 rest_call_put(DBObject *db, PyObject *key, PyObject *value, int expire, kt_mode mode);
 
-inline PyObject* 
+PyObject* 
 rest_call_delete(DBObject *db, PyObject *keyObj);
 
 #endif

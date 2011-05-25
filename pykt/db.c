@@ -7,7 +7,7 @@
 #define DEFAULT_PORT 1978
 #define DEFAULT_TIMEOUT 30
 
-inline int
+int
 is_opened(DBObject *self)
 {
     if(self->con){

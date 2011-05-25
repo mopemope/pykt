@@ -15,7 +15,7 @@ init_bucket(http_connection *con, int size)
     return 1;
 }
 
-inline PyObject* 
+PyObject* 
 rest_call_get(DBObject *db, PyObject *keyObj)
 {
     http_connection *con;
@@ -65,7 +65,7 @@ rest_call_get(DBObject *db, PyObject *keyObj)
     return result;
 }
 
-inline PyObject* 
+PyObject* 
 rest_call_head(DBObject *db, PyObject *keyObj)
 {
     http_connection *con;
@@ -108,7 +108,7 @@ rest_call_head(DBObject *db, PyObject *keyObj)
     return result;
 }
 
-inline PyObject* 
+PyObject* 
 rest_call_put(DBObject *db, PyObject *keyObj, PyObject *valueObj, int expire, kt_mode mode)
 {
     http_connection *con;
@@ -199,7 +199,7 @@ rest_call_put(DBObject *db, PyObject *keyObj, PyObject *valueObj, int expire, kt
     return result;
 }
 
-inline PyObject* 
+PyObject* 
 rest_call_delete(DBObject *db, PyObject *keyObj)
 {
     http_connection *con;

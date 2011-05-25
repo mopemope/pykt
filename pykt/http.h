@@ -57,19 +57,19 @@ typedef struct {
     uint8_t have_kt_error;
 } http_connection;
 
-inline http_connection *
+http_connection *
 open_http_connection(char *host, int port, int timeout);
 
-inline int
+int
 close_http_connection(http_connection *con);
 
-inline void 
+void 
 free_http_data(http_connection *con);
 
-inline int  
+int  
 request(http_connection *connection, int status_code);
 
-inline int 
+int 
 send_data(http_connection *con);
 
 #endif 

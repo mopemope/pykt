@@ -20,10 +20,10 @@ typedef struct {
     void *user;
 } tsv_ctx;
 
-inline void 
+void 
 tsv_init(tsv_ctx *ctx);
 
-inline size_t 
+size_t 
 tsv_execute(tsv_ctx *ctx, const char* data, size_t len, size_t off);
 
 #endif

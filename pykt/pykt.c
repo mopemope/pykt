@@ -76,7 +76,7 @@ set_deserialize_func(PyObject *self, PyObject *args)
     Py_RETURN_NONE;
 }
 
-inline void
+void
 call_wait_callback(int fd, int type)
 {
     PyObject *result = NULL, *args = NULL;
@@ -88,7 +88,7 @@ call_wait_callback(int fd, int type)
     }
 }
 
-inline PyObject *
+PyObject *
 serialize_value(PyObject *obj)
 {
     if(serialize_func){
@@ -98,7 +98,7 @@ serialize_value(PyObject *obj)
     }
 }
 
-inline PyObject *
+PyObject *
 deserialize_value(PyObject *obj)
 {
     if(deserialize_func){

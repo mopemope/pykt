@@ -16,28 +16,28 @@ typedef struct _buffer {
     size_t limit;
 } buffer;
 
-inline buffer * 
+buffer * 
 new_buffer(size_t buf_size, size_t limit);
 
-inline buffer_result
+buffer_result
 write2buf(buffer *buf, const char *c, size_t  l);
 
-inline void
+void
 free_buffer(buffer *buf);
 
-inline PyObject *
+PyObject *
 getPyString(buffer *buf);
 
-inline PyObject *
+PyObject *
 getPyStringAndDecode(buffer *buf);
 
-inline char *
+char *
 getString(buffer *buf);
 
-//inline void
+//void
 //buffer_list_fill(void);
 
-//inline void
+//void
 //buffer_list_clear(void);
 
 #endif

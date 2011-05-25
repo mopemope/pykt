@@ -5,13 +5,13 @@
 #include "buffer.h"
 #include "tsv_parser.h"
 
-inline PyObject * 
+PyObject * 
 convert2dict(buffer *buf);
 
-inline PyObject * 
+PyObject * 
 convert2valuedict(buffer *buf);
 
-inline PyObject * 
+PyObject * 
 convert2keylist(buffer *buf);
 
 #endif

@@ -110,7 +110,7 @@ writev_bucket(http_connection *con)
     return 1;
 }
 
-inline http_connection *
+http_connection *
 open_http_connection(char *host, int port, int timeout)
 {
 
@@ -149,7 +149,7 @@ open_http_connection(char *host, int port, int timeout)
     return con;
 }
 
-inline void
+void
 free_http_data(http_connection *con)
 {
     if(con == NULL){
@@ -166,7 +166,7 @@ free_http_data(http_connection *con)
     }
 }
 
-inline int
+int
 close_http_connection(http_connection *con)
 {
 
@@ -324,7 +324,7 @@ error:
     return -1;
 }
 
-inline int  
+int  
 request(http_connection *con, int status_code)
 {
    int ret;
@@ -340,7 +340,7 @@ request(http_connection *con, int status_code)
    return recv_response(con, status_code);
 }
 
-inline int 
+int 
 send_data(http_connection *con)
 {
     int ret;

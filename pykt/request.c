@@ -1,6 +1,6 @@
 #include "request.h"
 
-inline void
+void
 set_request_path(http_connection *con, char *method, size_t method_len, char *path, size_t path_len)
 {
     data_bucket *bucket = con->bucket;
@@ -12,7 +12,7 @@ set_request_path(http_connection *con, char *method, size_t method_len, char *pa
     set2bucket(bucket, CONNECTION_KEEP_ALIVE, LEN(CONNECTION_KEEP_ALIVE));
 }
 
-inline void
+void
 set_rest_request_path(http_connection *con, PyObject *dbObj, char *method, size_t method_len, char *path, size_t path_len)
 {
     data_bucket *bucket = con->bucket;
@@ -33,7 +33,7 @@ set_rest_request_path(http_connection *con, PyObject *dbObj, char *method, size_
 
 }
 
-inline void
+void
 add_content_length(http_connection *con, char *value, size_t value_len)
 {
     data_bucket *bucket = con->bucket;
@@ -51,26 +51,26 @@ add_kt_xt(http_connection *con, char *value, size_t value_len)
     set2bucket(bucket, CRLF, 2);
 }
 
-inline void
+void
 add_crlf(http_connection *con)
 {
     set2bucket(con->bucket, CRLF, 2);
 }
 
-inline void
+void
 end_header(http_connection *con)
 {
     add_crlf(con);
 }
 
-inline void
+void
 add_header_oneline(http_connection *con, char *value, size_t value_len)
 {
     data_bucket *bucket = con->bucket;
     set2bucket(bucket, value, value_len);
 }
 
-inline void
+void
 add_header(http_connection *con, char *name, size_t name_len, char *value, size_t value_len)
 {
     data_bucket *bucket = con->bucket;
@@ -80,7 +80,7 @@ add_header(http_connection *con, char *name, size_t name_len, char *value, size_
     set2bucket(bucket, CRLF, 2);
 }
 
-inline void
+void
 add_body(http_connection *con, char *value, size_t value_len)
 {
     //DEBUG("HTTP BODY \n%.*s", value_len, value);
