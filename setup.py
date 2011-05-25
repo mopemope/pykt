@@ -22,7 +22,7 @@ include_dirs=[]
 
 
 setup(name='pykt',
-        version="0.0.2",
+        version="0.0.3",
         description="KyotoTycoon client for Python",
         long_description=read("README.rst"),
         keywords='KyotoTycoon',
@@ -32,7 +32,6 @@ setup(name='pykt',
         license='BSD',
         platforms='Linux',
         test_suite = 'nose.collector',        
-        packages= ["pykt"],
         ext_modules = [
             Extension('pykt',
             sources=['pykt/pykt.c', 'pykt/db.c', 'pykt/bucket.c', 
